@@ -1,0 +1,33 @@
+You are given a number N, and your task is to determine whether it is a "Good Number" or not. A Good Number is defined as a number that is divisible by the sum of its own digits. If the number is divisible by the sum of its digits, it is classified as Good, otherwise, it is classified as Bad.
+
+Input Format
+Each test case contains a single integer N, the number you need to check.
+Output Format
+For each test case, print "Good Number" if the number is a Good, otherwise print "Bad Number".
+Output
+3
+18
+19
+21
+Good Number
+Bad Number
+
+
+## import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int orgn = n;
+        int sum =0;
+        while(n>0){
+            int rem = n%10;
+            sum = sum + rem;
+            n = n/10;
+        } 
+       if(orgn%sum==0){System.out.print("Good Number");}
+       else{
+           System.out.print("Bad Number");
+       }    
+    }
+}
