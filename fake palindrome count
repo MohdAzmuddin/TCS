@@ -1,0 +1,51 @@
+You are given a string A and you have to find the number of different sub-strings of the string A which are fake palindromes. 
+Note: 
+2. Fake Palindrome: A string is called as a fake palindrome if any of its permutations is a palindrome. For example, AAC is fake palindrome, but ACD is not. 
+
+Sample Input 1: 
+ABAB 
+Sample Output 1: 
+7 
+Explanation: 
+The fake palindrome for the string ABAB are A, B, A, B, ABA, BAB, ABAB. 
+
+
+###$#
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        int count = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i + 1; j <= s.length(); j++) {
+
+                String sub = s.substring(i, j);
+
+                int left = 0;
+                int right = sub.length() - 1;
+
+                boolean isPalindrome = true;
+
+                while (left < right) {
+                    if (sub.charAt(left) != sub.charAt(right)) {
+                        isPalindrome = false;
+                        break;
+                    }
+                    left++;
+                    right--;
+                }
+
+                if (isPalindrome) {
+                    count++;
+                }
+            }
+        }
+
+        System.out.println(count);
+    }
+}
