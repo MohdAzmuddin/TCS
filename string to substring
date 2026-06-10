@@ -1,0 +1,45 @@
+### Question: Print All Substrings of a String
+Given a string `S`, print all possible substrings of the string.
+abc
+**Output**
+a
+ab
+abc
+b
+bc
+c
+#### Explanation
+The substrings of `"abc"` are:
+* a
+* ab
+* abc
+* b
+* bc
+* c
+
+#### Java Solution
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i + 1; j <= s.length(); j++) {
+                System.out.println(s.substring(i, j));
+            }
+        }
+    }
+}
+Interview Tip
+For a string of length n, the total number of substrings is:
+2
+n(n+1)
+For example, for "abc" (n = 3):
+
+3 × 4 / 2 = 6 substrings
+3. Find the longest substring without repeating characters.
+4. Find the longest palindromic substring.
