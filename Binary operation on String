@@ -1,0 +1,42 @@
+### Problem Statement
+A high-security vault uses a special binary expression format to verify access codes.
+The expression consists of **0s, 1s, and operators** represented by characters:
+* **A** → AND
+* **B** → OR
+* **C** → XOR
+The vault evaluates the expression **strictly from left to right**, ignoring the normal precedence of logical operators.
+Given a binary expression string, determine the final binary result.
+If the input string is `"NULL"`, return **-1**.
+### Example 1
+**Input**
+1C0C1C1A0B1
+**Evaluation**
+1 XOR 0 = 1
+1 XOR 1 = 0
+0 XOR 1 = 1
+1 AND 0 = 0
+0 OR 1 = 1
+**Output**
+1
+
+
+class Main {
+    public static void main(String[] args) {
+        String s = "1A0C1C1A0B1";
+        int res = s.charAt(0)-'0';
+        for(int i=1;i<s.length()-1;i=i+2){
+            char op = s.charAt(i);
+            int num  = s.charAt(i+1)-'0';
+            if(op=='A'){
+                res = res & num;
+            }
+            else if(op=='B'){
+                res = res | num;
+            }
+            else if(op == 'C'){
+                res  =res ^num;
+            }
+        }
+        System.out.print(res);
+    }
+}
